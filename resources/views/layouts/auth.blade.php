@@ -8,7 +8,6 @@
     <title>Frivi | @yield('title')</title>
 
     @include('layouts.partials.css')
-    @yield('css')
 </head>
 
 <body>
