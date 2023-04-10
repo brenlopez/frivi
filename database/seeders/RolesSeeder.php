@@ -18,14 +18,20 @@ class RolesSeeder extends Seeder
             [
                 'rol_id' => 1,
                 'rol' => 'Admin',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'rol_id' => 2,
                 'rol' => 'Comprador',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'rol_id' => 3,
                 'rol' => 'Voluntario',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
     }

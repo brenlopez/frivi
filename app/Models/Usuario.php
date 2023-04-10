@@ -14,6 +14,8 @@ class Usuario extends Model
 
     protected $fillable = ['nombre', 'apellido', 'dni', 'email','password','foto_perfil','rol_id'];
 
+    protected $hidden = ['password', 'remember_token'];
+    
     public function roles()
     {
         return $this->belongsTo('App\Models\Rol','rol_id');

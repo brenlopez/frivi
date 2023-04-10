@@ -22,7 +22,7 @@ class CreateUsuariosTable extends Migration
             $table->string('password');
             $table->string('foto_perfil')->nullable();
             // $table->integer('calificacion');
-            // $table->string('remember_token');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
