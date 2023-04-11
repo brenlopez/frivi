@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsuariosTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -22,7 +22,7 @@ class CreateUsuariosTable extends Migration
             $table->string('password');
             $table->string('foto_perfil')->nullable();
             // $table->integer('calificacion');
-            // $table->string('remember_token');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

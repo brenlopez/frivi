@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +22,7 @@ class UsuariosSeeder extends Seeder
                 'apellido' => 'Admin',
                 'dni' => '12.345.678',
                 'email' => 'admin@gmail.com',
-                'password' => '12345',
+                'password' => \Hash::make('12345'),
                 'foto_perfil' => null,
                 'rol_id' => 1,
                 'created_at' => now(),
@@ -33,7 +34,7 @@ class UsuariosSeeder extends Seeder
                 'apellido' => 'Arias',
                 'dni' => '23.456.789',
                 'email' => 'juli@gmail.com',
-                'password' => 'juli123',
+                'password' => \Hash::make('juli123'),
                 'foto_perfil' => null,
                 'rol_id' => 2,
                 'created_at' => now(),
@@ -45,7 +46,7 @@ class UsuariosSeeder extends Seeder
                 'apellido' => 'Lopez',
                 'dni' => '34.567.890',
                 'email' => 'bren@gmail.com',
-                'password' => 'bren123',
+                'password' => \Hash::make('bren123'),
                 'foto_perfil' => null,
                 'rol_id' => 2,
                 'created_at' => now(),
@@ -57,7 +58,7 @@ class UsuariosSeeder extends Seeder
                 'apellido' => 'Vedia',
                 'dni' => '45.678.901',
                 'email' => 'lean@gmail.com',
-                'password' => 'lean123',
+                'password' => \Hash::make('lean123'),
                 'foto_perfil' => null,
                 'rol_id' => 2,
                 'created_at' => now(),
