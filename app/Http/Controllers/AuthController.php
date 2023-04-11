@@ -29,6 +29,10 @@ class AuthController extends Controller
 
             $request->session()->regenerate();
 
+            if(Auth::user()->rol_id != 2){
+                return redirect()->route('admin.index')->with('status','Sesión iniciada con exito');
+            }
+
             return redirect()->route('home')->with('status','Sesión iniciada con exito');
         }
 

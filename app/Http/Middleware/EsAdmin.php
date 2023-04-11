@@ -22,7 +22,7 @@ class EsAdmin
         $email = $request->input('email');
         $usuario = Usuario::where('email', $email)->first();
 
-        if(!Session::has('admin')){
+        if(!\Session::has('admin')){
             return $next($request);
         } else {
             if(Auth::user()->rol_id != 2){
