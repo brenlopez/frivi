@@ -1,0 +1,106 @@
+/* Home */
+
+body {
+    background-color: rgb(251, 251, 251);
+}
+
+.bg-light {
+    background-color: white !important;
+}
+
+.welcome-user {
+    display: flex;
+    width: max-content;
+    padding-bottom: 1rem;
+}
+
+.img-user-home {
+    width: 80px;
+    height: 80px;
+    margin-right: 1rem;
+}
+
+.img-user-home img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.user-info-home {
+    align-self: center;
+}
+
+.user-info-home p:last-of-type {
+    font-size: 0.85rem;
+    color: gray;
+}
+
+.home-content {
+    background-color: white;
+    border-radius: 15px 15px 0px 0px;
+    padding: 5%;
+    min-height: calc(100vh - (200px + 1rem));
+    box-shadow: 0px -6px 15px rgba(0, 0, 0, 0.04);
+}
+
+.home-content h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.tabs-home {
+    margin-top: 2rem;
+}
+
+.tabs-home ul {
+    justify-content: center;
+    border: 1px solid transparent;
+}
+
+.tabs-home ul button {
+    color: rgb(64, 64, 64);
+}
+
+.tabs-home .nav-tabs .nav-link {
+    border-color: gray;
+}
+
+#peticion-tab {
+    border-radius: 5px 0px 0px 5px !important;
+}
+
+#compra-tab {
+    border-radius: 0px 5px 5px 0px !important;
+}
+
+.tabs-home .tabs-home .nav-tabs .nav-item.show .nav-link,
+.tabs-home .nav-tabs .nav-link.active {
+    border-color: gray;
+    color: white;
+    background-color: gray;
+}
+
+.crear-peticion {
+    height: 200px;
+    border-radius: 10px;
+    background-color: rgb(232, 232, 232);
+    padding-top: 150px;
+    margin-top: 2rem;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.03);
+}
+
+.crear-peticion div {
+    background-color: rgba(250, 249, 249, 0.861);
+    height: 50px;
+    padding: 1rem;
+    border-radius: 0px 0px 10px 10px;
+}
+
+@media screen and (max-width: 992px) {
+    .home-content h1 {
+        font-size: 1.5rem;
+        width: 70%;
+    }
+}

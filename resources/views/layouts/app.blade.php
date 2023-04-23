@@ -13,8 +13,9 @@
 
 <body>
     @include('layouts.partials.header')
-    @yield('content')
-
+    <div class="main">
+        @yield('content')
+    </div>
     @include('layouts.partials.js')
     @yield('javascript')
 </body>
