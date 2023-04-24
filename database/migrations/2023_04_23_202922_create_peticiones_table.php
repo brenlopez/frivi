@@ -19,7 +19,8 @@ class CreatePeticionesTable extends Migration
             $table->string('descripcion');
             $table->date('fecha_peticion');
             $table->decimal('monto_maximo', 6 , 2);
-            $table->date('fecha_maxima');
+            $table->integer('tiempo_maximo');
+            $table->string('aclaracion', 140)->nullable();
             $table->string('ubicacion');
             $table->timestamps();
         });

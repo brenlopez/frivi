@@ -10,7 +10,7 @@ class Peticion extends Model
     protected $table = 'peticiones';
     protected $primaryKey = 'peticion_id';
 
-    protected $fillable = [ 'titulo','descripcion','fecha_peticion','monto_maximo','fecha_maxima','ubicacion','estado_id', 'usuario_id'];
+    protected $fillable = [ 'titulo','descripcion','fecha_peticion','monto_maximo','fecha_maxima','aclaracion','ubicacion','estado_id', 'usuario_id'];
 
     public function estados()
     {

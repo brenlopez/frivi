@@ -51,6 +51,19 @@
                                     class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
+
+                    <h2 class="mt-5">Mis peticiones</h2>
+                    <ul class="card mt-3">
+                        @foreach ($peticiones as $peticion)
+                            <li>Titulo: {{ $peticion->titulo }}</li>
+                            <li>Descripción: {{ $peticion->descripcion }}</li>
+                            <li>Fecha petición: {{ $peticion->fecha_peticion }}</li>
+                            <li>Monto máximo: ${{ $peticion->monto_maximo }}</li>
+                            <li>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</li>
+                            {{-- <li>Lugar de entrega: {{ $peticion->ubicacion }}</li> --}}
+                            <li>Aclaración: {{ $peticion->aclaración }}</li>
+                        @endforeach
+                    </ul>
                 </div>
 
                 {{-- Compra --}}
