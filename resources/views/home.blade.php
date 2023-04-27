@@ -47,8 +47,8 @@
                     tabindex="0">
                     <div class="crear-peticion">
                         <div>
-                            <a href="#" class="d-flex justify-content-between">Crear una petición <i
-                                    class="fa fa-arrow-right"></i></a>
+                            <a href="{{ route('form.crear.peticion') }}" class="d-flex justify-content-between">Crear una
+                                petición <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
 
