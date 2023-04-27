@@ -20,6 +20,8 @@ Route::post('/cerrar-sesion', [\App\Http\Controllers\AuthController::class, 'cer
 
 Route::middleware(['auth'])->controller(\App\Http\Controllers\HomeController::class)->group(function(){
     Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/crear-peticion', [\App\Http\Controllers\PeticionesController::class, 'crearPeticion'])->name('form.crear.peticion');
+    Route::post('/guardar-peticion', [\App\Http\Controllers\PeticionesController::class, 'guardarPeticion'])->name('crear.peticion');
 });
 
 Route::middleware(['auth', 'EsAdmin'])->controller(\App\Http\Controllers\AdminController::class)->group(function(){

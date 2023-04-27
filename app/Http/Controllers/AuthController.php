@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
+use function PHPSTORM_META\type;
 
 class AuthController extends Controller
 {
@@ -30,15 +31,15 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if(Auth::user()->rol_id != 2){
-                return redirect()->route('admin.index')->with('status','Sesión iniciada con exito');
+                return redirect()->route('admin.index')->with('status','Sesión iniciada con exito')->with('type', 'success');
             }
 
-            return redirect()->route('home')->with('status','Sesión iniciada con exito');
+            return redirect()->route('home')->with('status','¡Sesión iniciada con éxito!')->with('type', 'success');
         }
 
         return redirect()
         ->route('auth.login')
-        ->withInput()->with('status','Las credenciales no coinciden con nuestros registros');
+        ->withInput()->with('status','Las credenciales no coinciden con nuestros registros')->with('type', 'danger');
     }
 
     public function cerrarSesion (Request $request){
@@ -47,6 +48,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('auth.login')->with('status','¡Tu sesión se cerró con éxito!');
+        return redirect()->route('auth.login')->with('status','¡Tu sesión se cerró con éxito!')->with('type', 'success');
     }
 }

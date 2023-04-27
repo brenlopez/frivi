@@ -4,7 +4,10 @@
 @section('content')
     <div class="container mt-5 pt-5">
         @if (Session('status'))
-            <p>{{ Session('status') }}</p>
+            <div class="alert alert-{{ Session('type') }} alert-dismissible fade show" role="alert">
+                {{ Session('status') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         @endif
         <h1 class="text-center">Iniciar Sesión</h1>
 
