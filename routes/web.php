@@ -19,7 +19,7 @@ Route::post('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'in
 Route::post('/cerrar-sesion', [\App\Http\Controllers\AuthController::class, 'cerrarSesion'])->name('auth.cerrar.sesion');
 
 Route::middleware(['auth'])->controller(\App\Http\Controllers\HomeController::class)->group(function(){
-    Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home/{busqueda?}', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/crear-peticion', [\App\Http\Controllers\PeticionesController::class, 'crearPeticion'])->name('form.crear.peticion');
     Route::post('/guardar-peticion', [\App\Http\Controllers\PeticionesController::class, 'guardarPeticion'])->name('crear.peticion');
 });

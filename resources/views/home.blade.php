@@ -30,20 +30,20 @@
             <div class="tabs-home">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="peticion-tab" data-bs-toggle="tab"
-                            data-bs-target="#peticion-tab-pane" type="button" role="tab"
-                            aria-controls="peticion-tab-pane" aria-selected="true">Peticiones</button>
+                        <button class="nav-link  active" id="compra-tab" data-bs-toggle="tab"
+                            data-bs-target="#compra-tab-pane" type="button" role="tab" aria-controls="compra-tab-pane"
+                            aria-selected="false">Compras</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="compra-tab" data-bs-toggle="tab" data-bs-target="#compra-tab-pane"
-                            type="button" role="tab" aria-controls="compra-tab-pane"
-                            aria-selected="false">Compras</button>
+                        <button class="nav-link" id="peticion-tab" data-bs-toggle="tab" data-bs-target="#peticion-tab-pane"
+                            type="button" role="tab" aria-controls="peticion-tab-pane"
+                            aria-selected="true">Peticiones</button>
                     </li>
                 </ul>
             </div>
             <div class="tab-content" id="myTabContent">
                 {{-- Peticiones --}}
-                <div class="tab-pane fade show active" id="peticion-tab-pane" role="tabpanel" aria-labelledby="peticion-tab"
+                <div class="tab-pane fade" id="peticion-tab-pane" role="tabpanel" aria-labelledby="peticion-tab"
                     tabindex="0">
                     <div class="crear-peticion">
                         <div>
@@ -55,20 +55,38 @@
                     <h2 class="mt-5">Mis peticiones</h2>
                     <ul class="card mt-3">
                         @foreach ($peticiones as $peticion)
-                            <li>Titulo: {{ $peticion->titulo }}</li>
-                            <li>Descripción: {{ $peticion->descripcion }}</li>
-                            <li>Fecha petición: {{ $peticion->fecha_peticion }}</li>
-                            <li>Monto máximo: ${{ $peticion->monto_maximo }}</li>
-                            <li>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</li>
-                            {{-- <li>Lugar de entrega: {{ $peticion->ubicacion }}</li> --}}
-                            <li>Aclaración: {{ $peticion->aclaración }}</li>
+                            @if ($peticion->usuario_id == $usuario_auth)
+                                <li>Titulo: {{ $peticion->titulo }}</li>
+                                <li>Descripción: {{ $peticion->descripcion }}</li>
+                                <li>Fecha petición: {{ $peticion->fecha_peticion }}</li>
+                                <li>Monto máximo: ${{ $peticion->monto_maximo }}</li>
+                                <li>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</li>
+                                {{-- <li>Lugar de entrega: {{ $peticion->ubicacion }}</li> --}}
+                                <li>Aclaración: {{ $peticion->aclaración }}</li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>
 
                 {{-- Compra --}}
-                <div class="tab-pane fade" id="compra-tab-pane" role="tabpanel" aria-labelledby="compra-tab" tabindex="0">
-                    Compra</div>
+                <div class="tab-pane fade  show active" id="compra-tab-pane" role="tabpanel" aria-labelledby="compra-tab"
+                    tabindex="0">
+
+                    <form action="{{ url('/home/' . $busqueda) }}" method="GET">
+                        <label for="busqueda">Destino</label>
+                        <input type="text" name="busqueda" id="busqueda" placeholder="Ingresar destino">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </form>
+
+                    <h2 class="mt-5">Peticiones cercanas a tu ubicación</h2>
+                    <ul>
+                        @foreach ($busqueda as $resultado)
+                            @if ($resultado->usuario_id !== $usuario_auth)
+                                <li>Titulo: {{ $resultado->titulo }}</li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
 
