@@ -67,11 +67,11 @@ body {
     border-color: gray;
 }
 
-#peticion-tab {
+#compra-tab {
     border-radius: 5px 0px 0px 5px !important;
 }
 
-#compra-tab {
+#peticion-tab {
     border-radius: 0px 5px 5px 0px !important;
 }
 
