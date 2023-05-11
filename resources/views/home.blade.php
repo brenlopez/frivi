@@ -55,8 +55,8 @@
                     <h2 class="mt-5">Mis peticiones</h2>
 
                     @foreach ($peticiones as $peticion)
-                        <div class="card mt-3 p-4">
-                            @if ($peticion->usuario_id == $usuario_auth)
+                        @if ($peticion->usuario_id == $usuario_auth)
+                            <div class="card mt-3 p-4">
                                 <h3>{{ $peticion->titulo }}</h3>
                                 <p>Descripción: {{ $peticion->descripcion }}</p>
                                 <p>Fecha petición: {{ $peticion->fecha_peticion }}</p>
@@ -64,8 +64,8 @@
                                 <p>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</p>
                                 {{-- <p>Lugar de entrega: {{ $peticion->ubicacion }}</p> --}}
                                 <p>Aclaración: {{ $peticion->aclaracion }}</p>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                     @endforeach
                 </div>
 
