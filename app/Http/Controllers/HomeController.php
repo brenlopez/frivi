@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notificacion;
 use App\Models\Peticion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,6 @@ class HomeController extends Controller
 
         $peticiones = Peticion::all();
 
-
         if(is_null($busqueda)){
             $busqueda = $request->query('busqueda');
         }
@@ -27,12 +27,12 @@ class HomeController extends Controller
 
 
         return view('home', array(
-            'nombre'       => $nombre,
-            'apellido'     => $apellido,
-            'imagen'       => $imagen,
-            'usuario_auth' => $usuario_id,
-            'peticiones'   => $peticiones,
-            'busqueda'     => $resultado 
+            'nombre'         => $nombre,
+            'apellido'       => $apellido,
+            'imagen'         => $imagen,
+            'usuario_auth'   => $usuario_id,
+            'peticiones'     => $peticiones,
+            'busqueda'       => $resultado 
         ));
     }
 }

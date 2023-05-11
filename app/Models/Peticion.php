@@ -25,4 +25,5 @@ class Peticion extends Model
         'usuario_id',
         'usuario_id');
     }
+
 }

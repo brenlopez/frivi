@@ -53,19 +53,20 @@
                     </div>
 
                     <h2 class="mt-5">Mis peticiones</h2>
-                    <ul class="card mt-3">
-                        @foreach ($peticiones as $peticion)
+
+                    @foreach ($peticiones as $peticion)
+                        <div class="card mt-3 p-4">
                             @if ($peticion->usuario_id == $usuario_auth)
-                                <li>Titulo: {{ $peticion->titulo }}</li>
-                                <li>Descripción: {{ $peticion->descripcion }}</li>
-                                <li>Fecha petición: {{ $peticion->fecha_peticion }}</li>
-                                <li>Monto máximo: ${{ $peticion->monto_maximo }}</li>
-                                <li>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</li>
-                                {{-- <li>Lugar de entrega: {{ $peticion->ubicacion }}</li> --}}
-                                <li>Aclaración: {{ $peticion->aclaración }}</li>
+                                <h3>{{ $peticion->titulo }}</h3>
+                                <p>Descripción: {{ $peticion->descripcion }}</p>
+                                <p>Fecha petición: {{ $peticion->fecha_peticion }}</p>
+                                <p>Monto máximo: ${{ $peticion->monto_maximo }}</p>
+                                <p>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</p>
+                                {{-- <p>Lugar de entrega: {{ $peticion->ubicacion }}</p> --}}
+                                <p>Aclaración: {{ $peticion->aclaracion }}</p>
                             @endif
-                        @endforeach
-                    </ul>
+                        </div>
+                    @endforeach
                 </div>
 
                 {{-- Compra --}}
@@ -73,16 +74,29 @@
                     tabindex="0">
 
                     <form action="{{ url('/home/' . $busqueda) }}" method="GET">
-                        <label for="busqueda">Destino</label>
-                        <input type="text" name="busqueda" id="busqueda" placeholder="Ingresar destino">
-                        <button type="submit" class="btn btn-primary">Buscar</button>
+                        <label for="busqueda" class="visually-hidden">Destino</label>
+                        <div class="d-flex mt-5 justify-content-center w-100">
+                            <input type="text" name="busqueda" id="busqueda" placeholder="Ingresar destino"
+                                class="form-control">
+                            <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i></button>
+                        </div>
                     </form>
 
-                    <h2 class="mt-5">Peticiones cercanas a tu ubicación</h2>
+                    <h2 class="mt-5">Ayudá a un vecino</h2>
                     <ul>
                         @foreach ($busqueda as $resultado)
                             @if ($resultado->usuario_id !== $usuario_auth)
                                 <li>Titulo: {{ $resultado->titulo }}</li>
+                                <li>
+                                    <form action="{{ route('enviar.oferta') }}" method="post">
+                                        @csrf
+                                        <input type="text" value="{{ $usuario_auth }}" name="voluntario_id"
+                                            class="visually-hidden">
+                                        <input type="text" value="{{ $resultado->peticion_id }}" name="peticion_id"
+                                            class="visually-hidden">
+                                        <button type="submit" class="btn btn-primary">Ofrecer ayuda</button>
+                                    </form>
+                                </li>
                             @endif
                         @endforeach
                     </ul>
