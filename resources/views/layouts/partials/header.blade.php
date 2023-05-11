@@ -9,9 +9,12 @@
             <ul class="navbar-nav">
                 @auth
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('notificaciones') }}"><i class="fa fa-bell"></i></a>
+                    </li>
+                    <li class="nav-item">
                         <form action="{{ route('auth.cerrar.sesion') }}" method="post">
                             @csrf
-                            <button type="submit" class="nav-link btn">Cerrar Sesion</button>
+                            <button type="submit" class="nav-link btn">Cerrar Sesión</button>
                         </form>
                     </li>
                     @elseguest
