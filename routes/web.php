@@ -22,6 +22,7 @@ Route::middleware(['auth'])->controller(\App\Http\Controllers\HomeController::cl
     Route::get('/home/{busqueda?}', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/crear-peticion', [\App\Http\Controllers\PeticionesController::class, 'crearPeticion'])->name('form.crear.peticion');
     Route::post('/guardar-peticion', [\App\Http\Controllers\PeticionesController::class, 'guardarPeticion'])->name('crear.peticion');
+    Route::post('/aceptar-voluntario', [\App\Http\Controllers\PeticionesController::class, 'aceptarVoluntario'])->name('aceptar.voluntario');
     Route::get('/notificaciones', [\App\Http\Controllers\NotificacionesController::class, 'index'])->name('notificaciones');
     Route::post('/enviar-oferta', [\App\Http\Controllers\NotificacionesController::class, 'enviarOferta'])->name('enviar.oferta');
 });

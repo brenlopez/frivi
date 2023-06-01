@@ -21,6 +21,7 @@ class CreatePeticionesTable extends Migration
             $table->decimal('monto_maximo', 6 , 2);
             $table->integer('tiempo_maximo');
             $table->string('aclaracion', 140)->nullable();
+            $table->string('voluntario_id')->nullable();
             $table->string('ubicacion');
             $table->timestamps();
         });

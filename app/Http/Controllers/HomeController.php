@@ -17,7 +17,7 @@ class HomeController extends Controller
         $imagen = Auth::user()->foto_perfil;
         $usuario_id = Auth::user()->usuario_id;
 
-        $peticiones = Peticion::all();
+        $peticiones = Peticion::orderBy('created_at','DESC')->get();
 
         if(is_null($busqueda)){
             $busqueda = $request->query('busqueda');

@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="home-content">
-            <h1>¿Qué quieres hacer el día de hoy?</h1>
+            <h1>¿Qué querés hacer el día de hoy?</h1>
 
             <div class="tabs-home">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
