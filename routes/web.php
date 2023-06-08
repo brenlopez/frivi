@@ -20,9 +20,13 @@ Route::post('/cerrar-sesion', [\App\Http\Controllers\AuthController::class, 'cer
 
 Route::middleware(['auth'])->controller(\App\Http\Controllers\HomeController::class)->group(function(){
     Route::get('/home/{busqueda?}', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
     Route::get('/crear-peticion', [\App\Http\Controllers\PeticionesController::class, 'crearPeticion'])->name('form.crear.peticion');
     Route::post('/guardar-peticion', [\App\Http\Controllers\PeticionesController::class, 'guardarPeticion'])->name('crear.peticion');
     Route::post('/aceptar-voluntario', [\App\Http\Controllers\PeticionesController::class, 'aceptarVoluntario'])->name('aceptar.voluntario');
+    Route::get('/seguimiento/{id}', [\App\Http\Controllers\PeticionesController::class, 'seguirPeticion'])->name('seguir.peticion');
+    Route::post('/cargar-imagen', [\App\Http\Controllers\PeticionesController::class, 'cargarImagen'])->name('form.cargar.imagen');
+
     Route::get('/notificaciones', [\App\Http\Controllers\NotificacionesController::class, 'index'])->name('notificaciones');
     Route::post('/enviar-oferta', [\App\Http\Controllers\NotificacionesController::class, 'enviarOferta'])->name('enviar.oferta');
 });

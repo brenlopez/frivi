@@ -64,6 +64,10 @@
                                 <p>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</p>
                                 {{-- <p>Lugar de entrega: {{ $peticion->ubicacion }}</p> --}}
                                 <p>Aclaración: {{ $peticion->aclaracion }}</p>
+                                @if ($peticion->estados->estado_id == 2)
+                                    <a href="{{ route('seguir.peticion', ['id' => $peticion->peticion_id]) }}"
+                                        class="btn btn-primary w-25">Seguir pedido</a>
+                                @endif
                             </div>
                         @endif
                     @endforeach
@@ -86,7 +90,10 @@
                     <ul>
                         @foreach ($busqueda as $resultado)
                             @if ($resultado->usuario_id !== $usuario_auth)
+                                <li>Ayudá a {{ $resultado->usuario->nombre }} {{ $resultado->usuario->apellido }}</li>
                                 <li>Titulo: {{ $resultado->titulo }}</li>
+                                <li>Detalle: {{ $resultado->descripcion }}</li>
+
                                 <li>
                                     <form action="{{ route('enviar.oferta') }}" method="post">
                                         @csrf

@@ -23,16 +23,22 @@ class EstadosSeeder extends Seeder
             ],
             [
                 'estado_id' => 2,
-                'estado' => 'Aprobado',
+                'estado' => 'En proceso',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
                 'estado_id' => 3,
-                'estado' => 'Finalizado',
+                'estado' => 'Compra realizada',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'estado_id' => 4,
+                'estado' => 'Finalizado',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
             
         ]);
     }

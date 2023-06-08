@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Peticion;
 use App\Models\Notificacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class PeticionesController extends Controller
@@ -55,6 +56,40 @@ class PeticionesController extends Controller
 
         $mensaje->save();
 
-        return redirect()->route('home')->with('status', '¡Tu petición ya tiene un voluntario!')->with('type','success');
+        return redirect()->route('seguir.peticion', ['id' => $peticion->peticion_id])->with('status', '¡Elegiste a tu voluntario! Hacé el seguimiento del pedido aquí.')->with('type','success');
+    }
+
+    public function seguirPeticion($id)
+    {
+        $user = Auth::user()->usuario_id;
+
+        $peticion = Peticion::find($id);
+        return view('usuario.peticiones.seguimiento', [
+            'peticion' => $peticion,
+            'usuario' => $user
+        ]);
+    }
+
+    public function cargarImagen(Request $request){
+        $peticion = Peticion::findOrFail($request->input('peticion_id'));
+
+        // if($imagen){
+        //     $image_path = $imagen->getClientOriginalName();
+        //     \Storage::disk('images')->($image_path, \File::get($imagen));
+
+        //     $peticion->imagen = $image_path;
+        // }
+
+        if($request->hasFile('imagen')){
+            
+            $imagen = $request->file('imagen');
+            $peticion->imagen = date('YmdHis') . "_" . Str::slug($peticion->titulo) . "." . $imagen->extension();
+
+            $imagen->move(public_path('asset/img'), $peticion->imagen);
+        }
+        $peticion->estado_id = 3;
+        $peticion->update();
+
+        return redirect()->route('seguir.peticion', ['id' => $peticion->peticion_id])->with('status', '¡Tu ticket se cargó con éxito!')->with('type','success');
     }
 }
