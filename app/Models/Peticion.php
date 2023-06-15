@@ -26,4 +26,11 @@ class Peticion extends Model
         'usuario_id');
     }
 
+    public function voluntario()
+    {
+        return $this->belongsTo( Usuario::class,
+        'voluntario_id',
+        'usuario_id');
+    }
+
 }

@@ -152,3 +152,41 @@ body {
 .progressbar li.active + li:after {
     background-color: green;
 }
+
+/* Calificacion */
+
+.calificar {
+    width: 250px;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.calificar p {
+    text-align: center;
+}
+
+.calificar label {
+    font-size: 20px;
+}
+
+.calificar input[type="radio"] {
+    display: none;
+}
+
+.calificar label {
+    color: grey;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+.calificar label:hover,
+.calificar label:hover ~ label {
+    color: orange;
+}
+
+.calificar input[type="radio"]:checked ~ label {
+    color: orange;
+}
