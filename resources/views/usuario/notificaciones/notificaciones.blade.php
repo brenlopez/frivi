@@ -28,7 +28,7 @@
                             <button type="submit" class="btn btn-primary w-25">Aceptar ayuda</button>
                         </form>
                     </div>
-                @elseif($usuario_auth == $notificacion->peticion->voluntario_id && $notificacion->peticion->estado_id == 2)
+                @elseif($usuario_auth == $notificacion->peticion->voluntario_id && $notificacion->peticion->estado_id !== 1)
                     <div class="col-12 card p-3 mb-3">
                         <h2 class="h4"><i class="fa fa-envelope"></i> ¡{{ $notificacion->peticion->usuario->nombre }}
                             {{ $notificacion->peticion->usuario->apellido }} aceptó tu ayuda!</h2>

@@ -36,8 +36,12 @@
                     <ul>
                         <li> Descripción: {{ $peticion->descripcion }}</li>
                         <li> Monto máximo: ${{ $peticion->monto_maximo }}</li>
-                        <li> Usuario : {{ $peticion->usuario->nombre }} {{ $peticion->usuario->apellido }}</li>
-                        <li> Entregar en : {{ $peticion->ubicacion }}</li>
+                        @if ($peticion->voluntario_id == $usuario)
+                            <li> Usuario : {{ $peticion->usuario->nombre }} {{ $peticion->usuario->apellido }}</li>
+                            <li> Entregar en : {{ $peticion->ubicacion }}</li>
+                        @elseif ($peticion->usuario_id == $usuario)
+                            <li> Voluntario : {{ $peticion->voluntario->nombre }} {{ $peticion->voluntario->apellido }}</li>
+                        @endif
                     </ul>
 
                     @if ($peticion->voluntario_id == $usuario && $peticion->estado_id == 2)
@@ -51,7 +55,7 @@
                             <input type="text" class="visually-hidden" value="{{ $peticion->peticion_id }}"
                                 name="peticion_id">
                             <label for="ticket" class="visually-hidden">Cargar foto</label>
-                            <input type="file" class="form-control" id="ticket" name="imagen">
+                            <input type="file" class="form-control" id="ticket" name="imagen" required>
                             <button type="submit" class="btn btn-primary mt-4">Cargar imagen</button>
                         </form>
                     @endif
@@ -61,10 +65,123 @@
                         <img src="{{ asset('asset/img/' . $peticion->imagen) }}" alt="{{ $peticion->titulo }}">
                     @endif
 
+                    {{-- Boton voluntario --}}
                     @if ($peticion->voluntario_id == $usuario && $peticion->estado_id == 3)
-                        <button class="btn btn-primary mt-4 d-block">Pedido entregado</button>
+                        <button class="btn btn-primary mt-4 d-block" data-bs-toggle="modal"
+                            data-bs-target="#entregado">Pedido entregado</button>
                     @endif
 
+
+                    {{-- Boton usuario --}}
+                    @if ($peticion->usuario_id == $usuario && $peticion->estado_id == 3)
+                        <button class="btn btn-primary mt-4 d-block" data-bs-toggle="modal"
+                            data-bs-target="#recibido">Pedido recibido</button>
+                    @endif
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Voluntario -->
+    <div class="modal fade" id="entregado" tabindex="-1" aria-labelledby="entregadoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="entregadoLabel">Calificá a {{ $peticion->usuario->nombre }}
+                        {{ $peticion->usuario->apellido }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Para finalizar la compra calificá a tu vecino según como haya sido tu experiencia con él.</p>
+                    <form action="" method="POST" class="calificar">
+                        @csrf
+                        <p class="clasificacion">
+                            <input id="radio1" type="radio" name="estrellas" value="5" required>
+                            <!--
+                                                                                --><label for="radio1">★</label>
+                            <!--
+                                                                                --><input id="radio2" type="radio"
+                                name="estrellas" value="4">
+                            <!--
+                                                                                --><label for="radio2">★</label>
+                            <!--
+                                                                                --><input id="radio3" type="radio"
+                                name="estrellas" value="3">
+                            <!--
+                                                                                --><label for="radio3">★</label>
+                            <!--
+                                                                                --><input id="radio4" type="radio"
+                                name="estrellas" value="2">
+                            <!--
+                                                                                --><label for="radio4">★</label>
+                            <!--
+                                                                                --><input id="radio5" type="radio"
+                                name="estrellas" value="1">
+                            <!--
+                                                                                --><label for="radio5">★</label>
+                        </p>
+                        <input type="number" name="rol" value='1' class="visually-hidden">
+                        <input type="text" name='usuario' value='{{ $peticion->usuario_id }}' class="visually-hidden">
+                        <input type="text" name='peticion' value='{{ $peticion->peticion_id }}' class="visually-hidden">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Atrás</button>
+                    <button type="submit" class="btn btn-primary">Calificar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Vecino -->
+    <div class="modal fade" id="recibido" tabindex="-1" aria-labelledby="recibidoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="recibidoLabel">Calificá a {{ $peticion->voluntario->nombre }}
+                        {{ $peticion->voluntario->apellido }}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Para finalizar la compra calificá al tu voluntario según como haya sido tu experiencia con él.</p>
+                    <form action="" method="POST" class="calificar">
+                        @csrf
+                        <p class="clasificacion">
+                            <input id="radio1" type="radio" name="estrellas" value="5" required>
+                            <!--
+                                                                                    --><label for="radio1">★</label>
+                            <!--
+                                                                                    --><input id="radio2"
+                                type="radio" name="estrellas" value="4">
+                            <!--
+                                                                                    --><label for="radio2">★</label>
+                            <!--
+                                                                                    --><input id="radio3"
+                                type="radio" name="estrellas" value="3">
+                            <!--
+                                                                                    --><label for="radio3">★</label>
+                            <!--
+                                                                                    --><input id="radio4"
+                                type="radio" name="estrellas" value="2">
+                            <!--
+                                                                                    --><label for="radio4">★</label>
+                            <!--
+                                                                                    --><input id="radio5"
+                                type="radio" name="estrellas" value="1">
+                            <!--
+                                                                                    --><label for="radio5">★</label>
+                        </p>
+                        <input type="number" name="rol" value='2' class="visually-hidden">
+                        <input type="text" name='usuario' value='{{ $peticion->voluntario_id }}'
+                            class="visually-hidden">
+                        <input type="text" name='peticion' value='{{ $peticion->peticion_id }}'
+                            class="visually-hidden">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Atrás</button>
+                    <button type="submit" class="btn btn-primary">Calificar</button>
                 </div>
             </div>
         </div>
