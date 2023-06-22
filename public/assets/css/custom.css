@@ -155,12 +155,6 @@ body {
 
 /* Calificacion */
 
-.calificar {
-    width: 250px;
-    margin: 0 auto;
-    height: 50px;
-}
-
 .calificar p {
     text-align: center;
 }

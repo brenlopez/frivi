@@ -73,19 +73,12 @@ class PeticionesController extends Controller
     public function cargarImagen(Request $request){
         $peticion = Peticion::findOrFail($request->input('peticion_id'));
 
-        // if($imagen){
-        //     $image_path = $imagen->getClientOriginalName();
-        //     \Storage::disk('images')->($image_path, \File::get($imagen));
-
-        //     $peticion->imagen = $image_path;
-        // }
-
         if($request->hasFile('imagen')){
             
             $imagen = $request->file('imagen');
             $peticion->imagen = date('YmdHis') . "_" . Str::slug($peticion->titulo) . "." . $imagen->extension();
 
-            $imagen->move(public_path('asset/img'), $peticion->imagen);
+            $imagen->move(public_path('assets/img'), $peticion->imagen);
         }
         $peticion->estado_id = 3;
         $peticion->update();

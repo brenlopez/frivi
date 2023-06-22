@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use App\Models\Usuario;
+use App\Models\Peticion;
+use Illuminate\Support\Facades\Auth;
+
+class Seguimiento
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     */
+    public function handle(Request $request, Closure $next)
+    {
+
+        $id = $request->route('id');
+        $peticion = Peticion::find($id);
+        $user = Auth::user()->usuario_id;
+
+        if ($user == $peticion->usuario_id || $user == $peticion->voluntario_id){
+            return $next($request);
+        }else{
+            return redirect()
+            ->route('home')
+            ->withInput()
+            ->with('status', 'No tienes permiso para hacer este seguimiento')->with('type','success');;
+        }
+
+    }
+}
