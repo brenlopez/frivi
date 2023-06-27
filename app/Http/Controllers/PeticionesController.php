@@ -78,7 +78,7 @@ class PeticionesController extends Controller
             $imagen = $request->file('imagen');
             $peticion->imagen = date('YmdHis') . "_" . Str::slug($peticion->titulo) . "." . $imagen->extension();
 
-            $imagen->move(public_path('assets/img'), $peticion->imagen);
+            $imagen->move(public_path('assets/img/orders'), $peticion->imagen);
         }
         $peticion->estado_id = 3;
         $peticion->update();

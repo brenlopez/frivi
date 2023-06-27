@@ -1,40 +1,227 @@
 /* Home */
-
-body {
-    background-color: rgb(251, 251, 251);
+* {
+    font-family: "Quicksand", sans-serif;
 }
 
-.bg-light {
-    background-color: white !important;
+/* Navbar Desktop */
+
+.main {
+    display: flex;
 }
 
 .welcome-user {
     display: flex;
-    width: max-content;
     padding-bottom: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3rem;
 }
 
-.img-user-home {
+.img-user-nav {
     width: 80px;
     height: 80px;
-    margin-right: 1rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
 }
 
-.img-user-home img {
+.user-info-nav p {
+    color: rgb(252, 252, 252);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.user-info-nav p i {
+    color: #f9a129;
+}
+
+.img-user-nav img {
     object-fit: cover;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 15px;
 }
 
-.user-info-home {
+.user-info-nav {
+    align-self: center;
+    text-align: center;
+}
+
+.user-info-nav p:last-of-type {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.sidebar {
+    width: 250px;
+    padding: 2rem 0;
+    background-color: #262626;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.logo {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.desktop-nav ul {
+    padding: 0px;
+    margin-top: 1rem;
+}
+
+.desktop-nav li a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.desktop-nav li {
+    padding-bottom: 0.3rem;
+    padding-top: 0.3rem;
+}
+
+.desktop-nav li.active {
+    background-color: #303030;
+    border-left: 3px solid #f9a129;
+}
+
+.desktop-nav li i {
+    color: #f9a129;
+    padding-left: 2rem;
+    font-size: 1rem;
+    padding-right: 0.3rem;
+}
+.logout-nav {
+    border-top: 1px solid rgba(195, 195, 195, 0.842);
+    margin: 1rem;
+}
+.logout-nav button {
+    background: transparent;
+    border: transparent;
+    color: white;
+    padding-top: 1rem;
+    padding-right: 0px;
+    font-size: 0.9rem;
+}
+
+.logout-nav button i {
+    padding-left: 0.5rem !important;
+}
+
+/* Navbar mobile */
+
+.mobile-nav {
+    background-color: #fff;
+    box-shadow: -2px -5px 29px -15px rgba(0, 0, 0, 0.5);
+    border-radius: 20px 20px 0 0;
+    display: none;
+    z-index: 1000;
+}
+
+.mobile-nav ul {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    list-style: none;
+    padding-left: 0px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.mobile-nav ul li.active {
+    background-color: #262626;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+}
+
+.mobile-nav ul li.active a i {
+    vertical-align: middle;
+}
+
+.mobile-nav ul li.active a {
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.mobile-nav ul a {
+    text-decoration: none;
+    color: #cad5eb;
+    font-size: 1.6rem;
+}
+
+.navbar {
+    display: none;
+}
+
+.navbar-brand {
+    background-image: url(../img/brand/logo.svg);
+    background-repeat: no-repeat;
+    font-size: 0px;
+    padding: 1rem;
+    width: 90px;
+    background-size: contain;
+    background-position: center;
+}
+
+.offcanvas.offcanvas-end {
+    position: fixed;
+    z-index: 2000 !important;
+}
+
+.text-bg-dark {
+    background-color: #262626 !important;
+}
+
+.offcanvas-header {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.offcanvas-header .btn-close {
+    align-self: end;
+}
+
+.info-user-offcanvas {
+    flex-direction: row;
+    display: flex;
+    padding: 1rem;
+}
+
+.info-user-offcanvas .user-info-nav p:first-of-type {
+    font-size: 1.3rem;
+}
+
+.info-user-offcanvas .user-info-nav {
+    text-align: left;
+    padding-left: 1rem;
     align-self: center;
 }
 
-.user-info-home p:last-of-type {
-    font-size: 0.85rem;
-    color: gray;
+.info-user-offcanvas .img-user-nav {
+    align-self: center;
+    margin-bottom: 0px;
 }
+
+.offcanvas-body {
+    background-color: white;
+}
+
+.offcanvas-body li a {
+    color: black;
+}
+
+/* Home */
 
 .home-content {
     background-color: white;
@@ -102,6 +289,22 @@ body {
     .home-content h1 {
         font-size: 1.5rem;
         width: 70%;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        flex-direction: column;
+    }
+
+    .mobile-nav {
+        display: block;
+    }
+
+    .navbar {
+        display: flex;
     }
 }
 

@@ -10,20 +10,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <div class="welcome-user">
-            <div class="img-user-home">
-                @if ($imagen == null)
-                    <img src="{{ asset('assets/img/user-img.png') }}" alt="foto de perfil">
-                @else
-                    <img src="{{ asset('assets/img/' . $imagen) }}" alt="foto de perfil">
-                @endif
-            </div>
-            <div class="user-info-home">
-                <p class="mb-0">Buenos días</p>
-                <p class="h4 ">{{ $nombre }} {{ $apellido }}</p>
-                <p><i class="pe-7s-map-marker"></i> Ubicación actual</p>
-            </div>
-        </div>
         <div class="home-content">
             <h1>¿Qué querés hacer el día de hoy?</h1>
 
@@ -42,7 +28,7 @@
                 </ul>
             </div>
             <div class="tab-content" id="myTabContent">
-                {{-- Peticiones --}}
+
                 <div class="tab-pane fade" id="peticion-tab-pane" role="tabpanel" aria-labelledby="peticion-tab"
                     tabindex="0">
                     <div class="crear-peticion">
@@ -62,7 +48,7 @@
                                 <p>Fecha petición: {{ $peticion->fecha_peticion }}</p>
                                 <p>Monto máximo: ${{ $peticion->monto_maximo }}</p>
                                 <p>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</p>
-                                {{-- <p>Lugar de entrega: {{ $peticion->ubicacion }}</p> --}}
+
                                 <p>Aclaración: {{ $peticion->aclaracion }}</p>
                                 @if ($peticion->estados->estado_id !== 1)
                                     <a href="{{ route('seguir.peticion', ['id' => $peticion->peticion_id]) }}"
@@ -73,7 +59,7 @@
                     @endforeach
                 </div>
 
-                {{-- Compra --}}
+
                 <div class="tab-pane fade  show active" id="compra-tab-pane" role="tabpanel" aria-labelledby="compra-tab"
                     tabindex="0">
 
@@ -110,6 +96,5 @@
                 </div>
             </div>
         </div>
-
     </section>
 @endsection

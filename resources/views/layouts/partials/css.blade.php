@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/glyphicons.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/pe-icon-7-stroke.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/icomoon.css') }}">
 
 {{-- Animate --}}
 
@@ -12,3 +13,5 @@
 
 {{-- Estilos personalizados --}}
 <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
