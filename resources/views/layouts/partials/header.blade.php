@@ -45,25 +45,21 @@
                 </div>
             </div>
             <div class="offcanvas-body">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        @auth
+                @auth
+                    <div class="" id="navbarNav">
+                        <ul class="navbar-nav">
                             <li><a href=""><i class="icon-tags"></i> Beneficios</a></li>
                             <li><a href=""><i class="icon-help"></i> Soporte</a></li>
                             <li><a href=""><i class="icon-tool"></i> Configuración</a></li>
-                            <li class="nav-item">
-                                <form action="{{ route('auth.cerrar.sesion') }}" method="post">
-                                    @csrf
-                                    <button type="submit" class="nav-link btn">Cerrar Sesión</button>
-                                </form>
-                            </li>
-                            @elseguest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('auth.login') }}">iniciar Sesión</a>
-                            </li>
-                        @endauth
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
+                    <div class="logout-nav">
+                        <form action="{{ route('auth.cerrar.sesion') }}" method="post">
+                            @csrf
+                            <button type="submit"><i class="icon-logout"></i> Cerrar Sesión</button>
+                        </form>
+                    </div>
+                @endauth
             </div>
         </div>
     </div>

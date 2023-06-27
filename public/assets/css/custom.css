@@ -215,10 +215,48 @@
 
 .offcanvas-body {
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.offcanvas-body li a {
+.offcanvas-body li a,
+.offcanvas-body .logout-nav button {
     color: black;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.offcanvas-body li a i,
+.offcanvas-body .logout-nav button i {
+    color: #f9a129;
+    font-size: 1.1rem;
+    padding-right: 0.3rem;
+    vertical-align: middle;
+    padding-left: 0px !important;
+}
+
+.offcanvas-body li {
+    padding-bottom: 0.7rem;
+}
+
+.offcanvas-body ul {
+    padding: 1rem;
+}
+
+.offcanvas-body .logout-nav button {
+    color: black;
+    padding-left: 0px;
+}
+
+.navbar-toggler-icon {
+    background-image: url(../img/icons/menu.svg);
+}
+
+.navbar-toggler {
+    border: var(--bs-border-width) solid transparent !important;
+    box-shadow: none !important;
 }
 
 /* Home */
