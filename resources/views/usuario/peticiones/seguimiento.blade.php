@@ -62,7 +62,7 @@
 
                     @if ($peticion->estado_id == 3 || $peticion->estado_id == 4)
                         <h3>Ticket cargado</h3>
-                        <img src="{{ asset('asset/img/' . $peticion->imagen) }}" alt="{{ $peticion->titulo }}">
+                        <img src="{{ asset('asset/img/orders/' . $peticion->imagen) }}" alt="{{ $peticion->titulo }}">
                     @endif
 
                     {{-- Boton voluntario --}}
@@ -105,31 +105,31 @@
                         <p class="clasificacion">
                             <input id="radio1" type="radio" name="estrellas" value="5">
                             <!--
-                                                                                                                                                                                                --><label
+                                                                                                                                                                                                    --><label
                                 for="radio1">★</label>
                             <!--
-                                                                                                                                                                                                --><input
+                                                                                                                                                                                                    --><input
                                 id="radio2" type="radio" name="estrellas" value="4">
                             <!--
-                                                                                                                                                                                                --><label
+                                                                                                                                                                                                    --><label
                                 for="radio2">★</label>
                             <!--
-                                                                                                                                                                                                --><input
+                                                                                                                                                                                                    --><input
                                 id="radio3" type="radio" name="estrellas" value="3">
                             <!--
-                                                                                                                                                                                                --><label
+                                                                                                                                                                                                    --><label
                                 for="radio3">★</label>
                             <!--
-                                                                                                                                                                                                --><input
+                                                                                                                                                                                                    --><input
                                 id="radio4" type="radio" name="estrellas" value="2">
                             <!--
-                                                                                                                                                                                                --><label
+                                                                                                                                                                                                    --><label
                                 for="radio4">★</label>
                             <!--
-                                                                                                                                                                                                --><input
+                                                                                                                                                                                                    --><input
                                 id="radio5" type="radio" name="estrellas" value="1">
                             <!--
-                                                                                                                                                                                                --><label
+                                                                                                                                                                                                    --><label
                                 for="radio5">★</label>
                         </p>
                         @if ($peticion->voluntario_id == $usuario && $peticion->estado_id == 3)
