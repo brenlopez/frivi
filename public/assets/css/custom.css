@@ -5,7 +5,7 @@
 
 /* Navbar Desktop */
 
-.main {
+body {
     display: flex;
 }
 
@@ -59,6 +59,14 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    position: fixed;
+}
+
+@media screen and (max-height: 600px) {
+    .sidebar {
+        height: auto;
+        min-height: 100vh;
+    }
 }
 
 .logo {
@@ -261,6 +269,61 @@
 
 /* Home */
 
+.main {
+    margin-left: auto;
+    width: calc(100% - 250px);
+}
+
+.location-header {
+    margin-top: 3rem;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    position: fixed;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 2px 5px -1px #00000024;
+    text-align: center;
+    font-size: 0.85rem;
+    display: none;
+    z-index: 900;
+}
+
+.location-header p {
+    margin-bottom: 0px;
+}
+
+.location-header i {
+    color: #f9a129;
+}
+
+.post-carousel {
+    width: 98%;
+    position: relative;
+    margin-top: 0.7rem;
+    margin-bottom: 2rem;
+}
+
+.post-carousel .item {
+    height: 275px;
+    border-radius: 10px;
+    background-color: #262626;
+}
+
+.bg-1 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 2rem;
+    height: 100%;
+}
+
+.bg-ads {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 1rem;
+}
+
 .home-content {
     background-color: white;
     border-radius: 15px 15px 0px 0px;
@@ -324,6 +387,30 @@
 }
 
 @media screen and (max-width: 992px) {
+    #home {
+        margin-top: 94px;
+        margin-bottom: 60px;
+    }
+
+    .main {
+        width: 100%;
+        padding-bottom: 2rem;
+    }
+
+    .post-carousel {
+        position: relative;
+        margin-top: 0rem;
+        width: 100%;
+    }
+
+    .post-carousel .item {
+        border-radius: 0px;
+    }
+
+    .location-header {
+        display: block;
+    }
+
     .home-content h1 {
         font-size: 1.5rem;
         width: 70%;

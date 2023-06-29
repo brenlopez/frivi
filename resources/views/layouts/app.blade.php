@@ -14,8 +14,8 @@
 
 <body>
     @include('layouts.partials.header')
+    @include('layouts.partials.navbar')
     <div class="main">
-        @include('layouts.partials.navbar')
         @yield('content')
     </div>
     @include('layouts.partials.js')

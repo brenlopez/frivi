@@ -11,6 +11,11 @@
 
 <link rel="stylesheet" href="{{ asset('assets/css/animate.min.css') }}">
 
+{{-- Carousel --}}
+<link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
+
+
 {{-- Estilos personalizados --}}
 <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
