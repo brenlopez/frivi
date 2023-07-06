@@ -25,7 +25,7 @@
                                 name="voluntario_id">
                             <input type="text" class="visually-hidden" value="{{ $notificacion->peticion->peticion_id }}"
                                 name="peticion_id">
-                            <button type="submit" class="btn btn-primary w-25">Aceptar ayuda</button>
+                            <button type="submit" class="btn btn-dark w-25">Aceptar ayuda</button>
                         </form>
                     </div>
                 @elseif($usuario_auth == $notificacion->peticion->voluntario_id && $notificacion->peticion->estado_id !== 1)
@@ -38,7 +38,7 @@
                         </ul>
 
                         <a href="{{ route('seguir.peticion', ['id' => $notificacion->peticion_id]) }}"
-                            class="btn btn-primary w-25">Seguir pedido</a>
+                            class="btn btn-dark w-25">Seguir pedido</a>
                     </div>
                 @endif
             @endforeach

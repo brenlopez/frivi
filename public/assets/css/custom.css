@@ -299,12 +299,12 @@ body {
     width: 98%;
     position: relative;
     margin-top: 0.7rem;
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
 }
 
 .post-carousel .item {
     height: 275px;
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
     background-color: #262626;
 }
 
@@ -313,8 +313,33 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    padding: 2rem;
+    /* padding: 2rem; */
     height: 100%;
+    background-image: url(../img/publi.png);
+}
+
+.info-post {
+    padding: 1rem;
+    background-color: #fefefed2;
+    width: 250px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bg-1 .info-post h2,
+.bg-1 .info-post p {
+    color: #024810;
+}
+
+.info-post h2 {
+    font-size: 2rem;
+}
+
+.info-post span {
+    font-size: 2.5rem;
+    font-weight: 800;
 }
 
 .bg-ads {
@@ -339,35 +364,65 @@ body {
 }
 
 .tabs-home {
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
 }
 
 .tabs-home ul {
     justify-content: center;
     border: 1px solid transparent;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 .tabs-home ul button {
     color: rgb(64, 64, 64);
+    margin-top: -1px;
 }
 
 .tabs-home .nav-tabs .nav-link {
-    border-color: gray;
+    /* border-color: gray; */
+    border-radius: 0px !important;
+    background-color: #fff;
+    padding: 0.8rem;
+    font-weight: 600;
+}
+
+li.nav-item {
+    width: 50%;
+}
+
+li.nav-item:hover button {
+    color: #262626;
+}
+
+li.nav-item:hover button.active {
+    color: #262626;
 }
 
 #compra-tab {
-    border-radius: 5px 0px 0px 5px !important;
+    width: 100%;
 }
 
 #peticion-tab {
+    /* border-radius: 0px 5px 5px 0px !important; */
+    width: 100%;
+}
+
+#compra-tab.active {
     border-radius: 0px 5px 5px 0px !important;
+    margin-left: -1px;
+}
+
+#peticion-tab.active {
+    border-radius: 5px 0px 0px 5px !important;
+    margin-right: -1px;
 }
 
 .tabs-home .tabs-home .nav-tabs .nav-item.show .nav-link,
 .tabs-home .nav-tabs .nav-link.active {
-    border-color: gray;
+    border-color: #262626;
     color: white;
-    background-color: gray;
+    background-color: #262626;
 }
 
 .crear-peticion {
@@ -384,6 +439,56 @@ body {
     height: 50px;
     padding: 1rem;
     border-radius: 0px 0px 10px 10px;
+}
+#compra-tab-pane .buscador {
+    background-color: #ffc577;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+#compra-tab-pane .buscador h2 {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+#busqueda {
+    border-radius: 0.5rem 0px 0px 0.5rem !important;
+    padding: 1rem;
+    border: 1px solid transparent;
+}
+
+#busqueda:focus {
+    box-shadow: none !important;
+}
+
+.buscador .btn {
+    background-color: white;
+    border-radius: 0px 0.5rem 0.5rem 0px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-left: -1px;
+}
+
+#ayuda-compra {
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+}
+
+#ayuda-compra article {
+    border: 1px solid gainsboro;
+}
+
+#ayuda-compra article .img-compra {
+    padding: 1rem;
+}
+
+#ayuda-compra article .img-compra img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 992px) {
@@ -430,6 +535,41 @@ body {
 
     .navbar {
         display: flex;
+    }
+
+    .tabs-home ul {
+        margin-left: 0rem;
+        margin-right: 0rem;
+    }
+
+    #compra-tab-pane .buscador {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .post-carousel .item {
+        height: 220px;
+    }
+
+    .info-post h2 {
+        font-size: 1.2rem;
+    }
+
+    .info-post span {
+        font-size: 1.8rem;
+        font-weight: 800;
+    }
+
+    .info-post p {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .info-post {
+        width: 180px;
     }
 }
 

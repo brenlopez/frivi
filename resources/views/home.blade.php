@@ -129,7 +129,15 @@
         <div class="post-carousel mx-auto">
             <div class="owl-carousel owl-theme">
                 <div class="item">
-                    <div class="bg-1" style="background-image: url('{{ asset('assets/images/ads/ad-1.jpg') }}');"></div>
+                    <div class="bg-1">
+                        <div class="info-post">
+                            <h2>Hasta <br>
+                                <span>50% OFF</span> <br>
+                                en Starbucks
+                            </h2>
+                            <p>Canjeá tus puntos y obtené descuentos exclusivos</p>
+                        </div>
+                    </div>
                 </div>
                 {{-- <div class="item">
                     <h4>2</h4>
@@ -137,88 +145,110 @@
             </div>
         </div>
 
-        <div class="container">
-            <div class="tabs-home">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link  active" id="compra-tab" data-bs-toggle="tab"
-                            data-bs-target="#compra-tab-pane" type="button" role="tab" aria-controls="compra-tab-pane"
-                            aria-selected="false">Compras</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="peticion-tab" data-bs-toggle="tab" data-bs-target="#peticion-tab-pane"
-                            type="button" role="tab" aria-controls="peticion-tab-pane"
-                            aria-selected="true">Peticiones</button>
-                    </li>
-                </ul>
-            </div>
-            <div class="tab-content" id="myTabContent">
+        <div class="tabs-home">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link  active" id="compra-tab" data-bs-toggle="tab" data-bs-target="#compra-tab-pane"
+                        type="button" role="tab" aria-controls="compra-tab-pane" aria-selected="false">Compras</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="peticion-tab" data-bs-toggle="tab" data-bs-target="#peticion-tab-pane"
+                        type="button" role="tab" aria-controls="peticion-tab-pane"
+                        aria-selected="true">Peticiones</button>
+                </li>
+            </ul>
+        </div>
 
-                <div class="tab-pane fade" id="peticion-tab-pane" role="tabpanel" aria-labelledby="peticion-tab"
-                    tabindex="0">
-                    <div class="crear-peticion">
-                        <div>
-                            <a href="{{ route('form.crear.peticion') }}" class="d-flex justify-content-between">Crear una
-                                petición <i class="fa fa-arrow-right"></i></a>
+        <div class="tab-content" id="myTabContent">
+
+            <div class="tab-pane fade" id="peticion-tab-pane" role="tabpanel" aria-labelledby="peticion-tab" tabindex="0">
+                <div class="crear-peticion">
+                    <div>
+                        <a href="{{ route('form.crear.peticion') }}" class="d-flex justify-content-between">Crear una
+                            petición <i class="fa fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <h2 class="mt-5">Mis peticiones</h2>
+
+                @foreach ($peticiones as $peticion)
+                    @if ($peticion->usuario_id == $usuario_auth)
+                        <div class="card mt-3 p-4">
+                            <h3>{{ $peticion->titulo }}</h3>
+                            <p>Descripción: {{ $peticion->descripcion }}</p>
+                            <p>Fecha petición: {{ $peticion->fecha_peticion }}</p>
+                            <p>Monto máximo: ${{ $peticion->monto_maximo }}</p>
+                            <p>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</p>
+
+                            <p>Aclaración: {{ $peticion->aclaracion }}</p>
+                            @if ($peticion->estados->estado_id !== 1)
+                                <a href="{{ route('seguir.peticion', ['id' => $peticion->peticion_id]) }}"
+                                    class="btn btn-dark w-25">Seguir pedido</a>
+                            @endif
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+
+
+            <div class="tab-pane fade  show active" id="compra-tab-pane" role="tabpanel" aria-labelledby="compra-tab"
+                tabindex="0">
+                <form action="{{ url('/home/' . $busqueda) }}" method="GET" class="buscador">
+                    <div class="container px-4">
+                        <h2 class="pb-3">Filtrá por ubicación</h2>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="busqueda" class="visually-hidden">Destino</label>
+                                <div class="d-flex justify-content-center w-100">
+                                    <input type="text" name="busqueda" id="busqueda" placeholder="Ingresar destino"
+                                        class="form-control">
+                                    <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </form>
 
-                    <h2 class="mt-5">Mis peticiones</h2>
-
-                    @foreach ($peticiones as $peticion)
-                        @if ($peticion->usuario_id == $usuario_auth)
-                            <div class="card mt-3 p-4">
-                                <h3>{{ $peticion->titulo }}</h3>
-                                <p>Descripción: {{ $peticion->descripcion }}</p>
-                                <p>Fecha petición: {{ $peticion->fecha_peticion }}</p>
-                                <p>Monto máximo: ${{ $peticion->monto_maximo }}</p>
-                                <p>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</p>
-
-                                <p>Aclaración: {{ $peticion->aclaracion }}</p>
-                                @if ($peticion->estados->estado_id !== 1)
-                                    <a href="{{ route('seguir.peticion', ['id' => $peticion->peticion_id]) }}"
-                                        class="btn btn-primary w-25">Seguir pedido</a>
-                                @endif
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-
-
-                <div class="tab-pane fade  show active" id="compra-tab-pane" role="tabpanel" aria-labelledby="compra-tab"
-                    tabindex="0">
-
-                    <form action="{{ url('/home/' . $busqueda) }}" method="GET">
-                        <label for="busqueda" class="visually-hidden">Destino</label>
-                        <div class="d-flex mt-5 justify-content-center w-100">
-                            <input type="text" name="busqueda" id="busqueda" placeholder="Ingresar destino"
-                                class="form-control">
-                            <button type="submit" class="btn btn-secondary"><i class="fa fa-search"></i></button>
-                        </div>
-                    </form>
-
-                    <h2 class="mt-5">Ayudá a un vecino</h2>
-                    <ul>
+                <div class="container m-1" id="ayuda-compra">
+                    <h2 class=" fw-bold">Realizá una buena acción</h2>
+                    {{-- <div class="row ">
                         @foreach ($busqueda as $resultado)
                             @if ($resultado->usuario_id !== $usuario_auth && $resultado->estado_id == 1)
-                                <li>Ayudá a {{ $resultado->usuario->nombre }} {{ $resultado->usuario->apellido }}</li>
-                                <li>Titulo: {{ $resultado->titulo }}</li>
-                                <li>Detalle: {{ $resultado->descripcion }}</li>
-
-                                <li>
-                                    <form action="{{ route('enviar.oferta') }}" method="post">
-                                        @csrf
-                                        <input type="text" value="{{ $usuario_auth }}" name="voluntario_id"
-                                            class="visually-hidden">
-                                        <input type="text" value="{{ $resultado->peticion_id }}" name="peticion_id"
-                                            class="visually-hidden">
-                                        <button type="submit" class="btn btn-primary">Ofrecer ayuda</button>
-                                    </form>
-                                </li>
+                                <article class="col-lg-4 col-md-6 col-12 d-flex">
+                                    <div>
+                                        <div class="img-compra">
+                                            <img src="{{ asset('assets/img/users/' . $resultado->usuario->foto_perfil) }}"
+                                                alt="">
+                                        </div>
+                                </article>
                             @endif
                         @endforeach
-                    </ul>
+                    </div> --}}
                 </div>
+                <ul>
+                    @foreach ($busqueda as $resultado)
+                        @if ($resultado->usuario_id !== $usuario_auth && $resultado->estado_id == 1)
+                            <li>
+                                <h4 class="h5 fw-bold">Ayudá a {{ $resultado->usuario->nombre }}
+                                    {{ $resultado->usuario->apellido }}
+                            </li>
+                            </h4>
+                            <li>Título: {{ $resultado->titulo }}</li>
+                            <li>Detalle: {{ $resultado->descripcion }}</li>
+
+                            <li class="mb-4">
+                                <form action="{{ route('enviar.oferta') }}" method="post">
+                                    @csrf
+                                    <input type="text" value="{{ $usuario_auth }}" name="voluntario_id"
+                                        class="visually-hidden">
+                                    <input type="text" value="{{ $resultado->peticion_id }}" name="peticion_id"
+                                        class="visually-hidden">
+                                    <button type="submit" class="btn btn-dark">Ofrecer ayuda</button>
+                                </form>
+                            </li>
+                        @endif
+                    @endforeach
+                </ul>
             </div>
         </div>
     </section>

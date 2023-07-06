@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Peticion;
 use App\Models\Notificacion;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,8 @@ class PeticionesController extends Controller
     public function seguirPeticion($id)
     {
         $user = Auth::user()->usuario_id;
+
+        // $review = Review::where('peticion_id', $id );
 
         $peticion = Peticion::find($id);
         return view('usuario.peticiones.seguimiento', [

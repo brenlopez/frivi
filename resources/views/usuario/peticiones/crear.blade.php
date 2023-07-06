@@ -31,7 +31,7 @@
                 <input type="text" name="aclaracion" id="aclaracion" class="form-control">
             </div>
             <input class="visually-hidden" name="usuario_id" value="{{ $id }}">
-            <button type="submit" class="btn btn-primary">Crear petición</button>
+            <button type="submit" class="btn btn-dark">Crear petición</button>
         </form>
     </section>
 @endsection
