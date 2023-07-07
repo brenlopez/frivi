@@ -476,6 +476,11 @@ li.nav-item:hover button.active {
     padding-bottom: 1rem;
 }
 
+#compra-tab-pane ul {
+    list-style: none;
+    padding-left: 0rem;
+}
+
 #ayuda-compra article {
     border: 1px solid gainsboro;
 }

@@ -162,32 +162,36 @@
         <div class="tab-content" id="myTabContent">
 
             <div class="tab-pane fade" id="peticion-tab-pane" role="tabpanel" aria-labelledby="peticion-tab" tabindex="0">
-                <div class="crear-peticion">
-                    <div>
-                        <a href="{{ route('form.crear.peticion') }}" class="d-flex justify-content-between">Crear una
-                            petición <i class="fa fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <h2 class="mt-5">Mis peticiones</h2>
-
-                @foreach ($peticiones as $peticion)
-                    @if ($peticion->usuario_id == $usuario_auth)
-                        <div class="card mt-3 p-4">
-                            <h3>{{ $peticion->titulo }}</h3>
-                            <p>Descripción: {{ $peticion->descripcion }}</p>
-                            <p>Fecha petición: {{ $peticion->fecha_peticion }}</p>
-                            <p>Monto máximo: ${{ $peticion->monto_maximo }}</p>
-                            <p>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</p>
-
-                            <p>Aclaración: {{ $peticion->aclaracion }}</p>
-                            @if ($peticion->estados->estado_id !== 1)
-                                <a href="{{ route('seguir.peticion', ['id' => $peticion->peticion_id]) }}"
-                                    class="btn btn-dark w-25">Seguir pedido</a>
-                            @endif
+                <div class="container">
+                    <div class="crear-peticion">
+                        <div>
+                            <a href="{{ route('form.crear.peticion') }}"
+                                class="d-flex justify-content-between nav-link">Crear
+                                una
+                                petición <i class="fa fa-arrow-right"></i></a>
                         </div>
-                    @endif
-                @endforeach
+                    </div>
+
+                    <h2 class="mt-5">Mis peticiones</h2>
+
+                    @foreach ($peticiones as $peticion)
+                        @if ($peticion->usuario_id == $usuario_auth)
+                            <div class="card mt-3 p-4">
+                                <h3>{{ $peticion->titulo }}</h3>
+                                <p>Descripción: {{ $peticion->descripcion }}</p>
+                                <p>Fecha petición: {{ $peticion->fecha_peticion }}</p>
+                                <p>Monto máximo: ${{ $peticion->monto_maximo }}</p>
+                                <p>Tiempo de espera: {{ $peticion->tiempo_maximo }} Horas</p>
+
+                                <p>Aclaración: {{ $peticion->aclaracion }}</p>
+                                @if ($peticion->estados->estado_id !== 1)
+                                    <a href="{{ route('seguir.peticion', ['id' => $peticion->peticion_id]) }}"
+                                        class="btn btn-dark w-25">Seguir pedido</a>
+                                @endif
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
             </div>
 
 
@@ -209,7 +213,7 @@
                     </div>
                 </form>
 
-                <div class="container m-1" id="ayuda-compra">
+                <div class="container" id="ayuda-compra">
                     <h2 class=" fw-bold">Realizá una buena acción</h2>
                     {{-- <div class="row ">
                         @foreach ($busqueda as $resultado)
@@ -224,31 +228,31 @@
                             @endif
                         @endforeach
                     </div> --}}
-                </div>
-                <ul>
-                    @foreach ($busqueda as $resultado)
-                        @if ($resultado->usuario_id !== $usuario_auth && $resultado->estado_id == 1)
-                            <li>
-                                <h4 class="h5 fw-bold">Ayudá a {{ $resultado->usuario->nombre }}
-                                    {{ $resultado->usuario->apellido }}
-                            </li>
-                            </h4>
-                            <li>Título: {{ $resultado->titulo }}</li>
-                            <li>Detalle: {{ $resultado->descripcion }}</li>
+                    <ul>
+                        @foreach ($busqueda as $resultado)
+                            @if ($resultado->usuario_id !== $usuario_auth && $resultado->estado_id == 1)
+                                <li>
+                                    <h4 class="h5 fw-bold">Ayudá a {{ $resultado->usuario->nombre }}
+                                        {{ $resultado->usuario->apellido }}
+                                </li>
+                                </h4>
+                                <li>Título: {{ $resultado->titulo }}</li>
+                                <li>Detalle: {{ $resultado->descripcion }}</li>
 
-                            <li class="mb-4">
-                                <form action="{{ route('enviar.oferta') }}" method="post">
-                                    @csrf
-                                    <input type="text" value="{{ $usuario_auth }}" name="voluntario_id"
-                                        class="visually-hidden">
-                                    <input type="text" value="{{ $resultado->peticion_id }}" name="peticion_id"
-                                        class="visually-hidden">
-                                    <button type="submit" class="btn btn-dark">Ofrecer ayuda</button>
-                                </form>
-                            </li>
-                        @endif
-                    @endforeach
-                </ul>
+                                <li class="mb-4">
+                                    <form action="{{ route('enviar.oferta') }}" method="post">
+                                        @csrf
+                                        <input type="text" value="{{ $usuario_auth }}" name="voluntario_id"
+                                            class="visually-hidden">
+                                        <input type="text" value="{{ $resultado->peticion_id }}" name="peticion_id"
+                                            class="visually-hidden">
+                                        <button type="submit" class="btn btn-dark">Ofrecer ayuda</button>
+                                    </form>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
